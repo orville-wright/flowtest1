@@ -5,7 +5,6 @@ fn main() {
     // gen a rand num, create vector @ len of rand_num
     // 
 
-    // let vcx: u8 = 0;
     let rndlen = rand::thread_rng().gen_range(3..=25);
     // let mut vect1 = vec![0; rndlen];
     let mut vect1: Vec<u8> = vec![];
@@ -13,11 +12,15 @@ fn main() {
     println!("Chosen random vector len: {}", rndlen);
 
     // cycle through vector and populate with random data
-    for i in 1..rndlen {
+    // I really dont like this methodology
+    // for i in 1..rndlen {
     //for i in &vect1 {
-	let rpopulate = rand::thread_rng().gen_range(0..=100);
-	println!("populating vector: {0}/{1}", i, rpopulate);
-	vect1.push(rpopulate);
+    let mut vcx: u8 = 0;
+    
+    for vcell in &vect1 {
+	   let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
+	   println!("populating vector: {0}/{1}", vect1.get(vcx), rpopulate);
+	   vect1.push(rpopulate);
     }
 
 
