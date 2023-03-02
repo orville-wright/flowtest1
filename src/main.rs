@@ -19,7 +19,7 @@ fn main() {
     
     for vcell in &vect1 {
 	   let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
-	   println!("populating vector: {0}/{1}", vect1.get(vcx), rpopulate);
+	   println!("populating vector: {0}/{1}", vect1.get(vcell), rpopulate);
 	   vect1.push(rpopulate);
     }
 
