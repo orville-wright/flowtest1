@@ -15,9 +15,18 @@ fn main() {
 
     // load each cell in the vector with a set of random data
     for value in &mut vect1 {
+        let neednl = false;
         let y: u8 = rng.gen();
-        *value = y;
-        println!("Vector:<{}>", &value);
+        *value = y;     // insert random number into this cell
+        if rndlen <= 10 {
+            print!("Vector:<{}> / ", &value);
+            let neednl = true;
+        } else {
+            println!("Vector:<{}>", &value);
+        }
+       if neednl {
+        println!(" ");
+       }
     }
 
     // cycle through vector and populate with random data
