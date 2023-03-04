@@ -20,13 +20,13 @@ fn main() {
         *value = y;     // insert random number into this cell
         if rndlen <= 10 {
             print!("Vector:<{}> / ", &value);
-            neednl += 1;
+            neednl += 1;    // track if we need a final tidy-up nl
         } else {
             println!("Vector:<{}>", &value);
         }
+    }
     if neednl != 0 {
         println!(" ");
-    }
     }
 
     // cycle through vector and populate with random data
