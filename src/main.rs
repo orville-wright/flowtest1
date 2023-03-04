@@ -7,7 +7,7 @@ fn main() {
 
     let rndlen = rand::thread_rng().gen_range(3..=25);
     // let mut vect1 = vec![0; rndlen];
-    let mut vect1: Vec<u8> = vec![];
+    let mut vect1: Vec<u8> = vec![7; rndlen];
 
     println!("Chosen random vector len: {}", rndlen);
 
@@ -15,12 +15,20 @@ fn main() {
     // I really dont like this methodology
     // for i in 1..rndlen {
     //for i in &vect1 {
-    let mut vcx: u8 = 0;
-    
-    for vcell in &vect1 {
-	   let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
-	   println!("populating vector: {0}/{1}", vect1.get(vcell), rpopulate);
-	   vect1.push(rpopulate);
+   
+    let mut vcx: usize = 0; 
+    // let data = &vect1[0];
+
+    // while let Some(thing) = vect1.get(1) {    // this did not gen an error
+    println!("Prepare to populate vector of current length: {0}", vect1.len() );
+    for valv in &mut vect1 {    // valv <= contents of vector cell
+        let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
+        // ZZlet data = &vect1[vcx];
+        //let vcx = vect1.get(1);
+        println!("populating vector : {0} : {1} / {2}", vcx, valv, rpopulate);
+        //vect1.push(rpopulate);
+	vcx += 1;
+        *valv = rpopulate;
     }
 
 
@@ -50,4 +58,8 @@ fn main() {
     while let Some(value) = vect1.pop() {
         println!("value = {value}"); // using curly braces to format a local variable
     }
+
+
+
+
 }
