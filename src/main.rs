@@ -3,8 +3,8 @@ use rand::Rng;
 fn main() {
     println!("========== start ===========");
 
-    // gen a rand num, create vector @ len of rand_num
-    // gen a 2nd rand num and use it to populate every cell with same num during init
+    /* gen a rand num, create vector @ len of rand_num
+      gen a 2nd rand num and use it to populate every cell with same num during init */
     let mut rng = rand::thread_rng();
     let y: u8 = rng.gen();
     let rndlen = rand::thread_rng().gen_range(3..=25);
@@ -30,10 +30,10 @@ fn main() {
 
     // cycle through vector and populate with random data
     // I really dont like this methodology
-    // for i in 1..rndlen {
-    // for i in &vect1 {
-    // while let Some(thing) = vect1.get(1) {    // this did not gen an error
-
+    /* for i in 1..rndlen {
+       for i in &vect1 {
+       while let Some(thing) = vect1.get(1) {    // this did not gen an error */
+    //
     let mut vcx: usize = 0; 
     println!("Populate vector cells with new random data @ Vector length: {0}", vect1.len() );
     for valv in &mut vect1 {    // valv <= contents of vector cell
