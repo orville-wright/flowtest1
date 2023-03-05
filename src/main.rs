@@ -14,38 +14,24 @@ fn main() {
 
     // load each cell in the vector with a set of random data
     println!("\nPopulating vector with random info...");
-    let mut neednl: u8 = 0;
+    let mut neednl: u8 = 1;
     for value in &mut vect1 {
         let y: u8 = rng.gen();
         *value = y;     // insert random number into this cell
-        match rndlen {
-            1..=10 => {
-                print!("Vector:<{}> / ", &value);
-                neednl += 1;    // track if we need a final tidy-up nl
-                },
-            _ => println!("Vector:<{}>", &value),
-        };
+        match neednl {
+            5 | 10 | 15 | 20 | 25 => println!("/ Vector: <{:03}>", &value),
+	    _ => print!("Vector: <{:03}> ", &value),
+	};
+	neednl += 1;
     }
     
-    if neednl != 0 {
-       println!(" ");
-    }
-        // keep
-        // if rndlen <= 10 {
-        //    print!("Vector:<{}> / ", &value);
-        //    neednl += 1;    // track if we need a final tidy-up nl
-        // } else {
-        //    println!("Vector:<{}>", &value);
-        // }
-        // keep
-
-    // }
+   println!("\n============= ==========");
 
 
     // cycle through vector and populate with random data
     // I really dont like this methodology
     // for i in 1..rndlen {
-    //for i in &vect1 {
+    // for i in &vect1 {
     // while let Some(thing) = vect1.get(1) {    // this did not gen an error
 
     let mut vcx: usize = 0; 
