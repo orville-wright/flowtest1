@@ -9,25 +9,38 @@ fn main() {
     let y: u8 = rng.gen();
     let rndlen = rand::thread_rng().gen_range(3..=25);
     let mut vect1: Vec<u8> = vec![y; rndlen];
-
-    println!("Chosen random vector len: {}", rndlen);
-    println!("Populating vector with random info");
+    println!("Chosen random vector len of: {}", rndlen);
+    
 
     // load each cell in the vector with a set of random data
+    println!("\nPopulating vector with random info...");
     let mut neednl: u8 = 0;
     for value in &mut vect1 {
         let y: u8 = rng.gen();
         *value = y;     // insert random number into this cell
-        if rndlen <= 10 {
-            print!("Vector:<{}> / ", &value);
-            neednl += 1;    // track if we need a final tidy-up nl
-        } else {
-            println!("Vector:<{}>", &value);
-        }
+        match rndlen {
+            1..=10 => {
+                print!("Vector:<{}> / ", &value);
+                neednl += 1;    // track if we need a final tidy-up nl
+                },
+            _ => println!("Vector:<{}>", &value),
+        };
     }
+    
     if neednl != 0 {
-        println!(" ");
+       println!(" ");
     }
+        // keep
+        // if rndlen <= 10 {
+        //    print!("Vector:<{}> / ", &value);
+        //    neednl += 1;    // track if we need a final tidy-up nl
+        // } else {
+        //    println!("Vector:<{}>", &value);
+        // }
+        // keep
+
+    // }
+
 
     // cycle through vector and populate with random data
     // I really dont like this methodology
