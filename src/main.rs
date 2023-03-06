@@ -13,7 +13,7 @@ fn main() {
     
 
     // load each cell in the vector with a set of random data
-    println!("\nPopulating vector with random info...");
+    println!("\nPopulating vector with ORIGNAL random data...");
     let mut neednl: u8 = 1;
     for value in &mut vect1 {
         let y: u8 = rng.gen();
@@ -28,13 +28,14 @@ fn main() {
    println!("\n============= ==========");
 
 
+    // OLD learning method
     // cycle through vector and populate with random data
     // I really dont like this methodology
     /* for i in 1..rndlen {
        for i in &vect1 {
        while let Some(thing) = vect1.get(1) {    // this did not gen an error */
-    //
-    let mut vcx: usize = 0; 
+    /*
+    let mut vcx: usize = 0;     // simple counter to track which vector vell we're working on - messy/sloppy
     println!("Populate vector cells with new random data @ Vector length: {0}", vect1.len() );
     for valv in &mut vect1 {    // valv <= contents of vector cell
         let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
@@ -42,6 +43,22 @@ fn main() {
     	vcx += 1;
         *valv = rpopulate;  // *deference, to take ownerhip and mutate the reference mutatable value
     }
+    */
+
+    // new method, more mature
+    // avoids sloppy unintegrated counters
+    for (i, &item) in &mut vect1.iter().enumerate() {
+        let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
+        println!("NEW sliced vector populate - cell: {:03} / orig: {:03} / NEW: {:03}", i, item, rpopulate);
+        //let mut v = vect1[i];
+        vect1[_] = rpopulate;
+        let valve = &mut vect1;
+        //println!("TEST: {}", v )
+        //v.push() = rpopulate;
+        //i = push(rpopulate);
+    }
+
+
 
     println!("==============================");
     println!("Vector len: {}", vect1.len() );
