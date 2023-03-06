@@ -17,8 +17,8 @@ fn main() {
     let mut neednl: u8 = 1;
     for value in &mut vect1 {
         let y: u8 = rng.gen();
-        *value = y;     // insert random number into this cell
-        match neednl {
+        *value = y;     // insert random number into this cell via *derefencing
+        match neednl {  // print rows with 5 collumns only
             5 | 10 | 15 | 20 | 25 => println!("/ Vector: <{:03}>", &value),
 	    _ => print!("Vector: <{:03}> ", &value),
 	};
@@ -40,15 +40,16 @@ fn main() {
         let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
         println!("populating vector - cell: {:03} / orig: {:03} / new: {:03}", vcx, valv, rpopulate);
     	vcx += 1;
-        *valv = rpopulate;
+        *valv = rpopulate;  // *deference, to take ownerhip and mutate the reference mutatable value
     }
 
     println!("==============================");
     println!("Vector len: {}", vect1.len() );
 
     // and odd way to access the data in a vector
-    for value in &vect1 {
-        println!("Vector:<{}>", &value);
+    // this is a read operation, not a write
+    for value in &vect1 {              // a &refernce borrow, i.e. no ownership
+        println!("Vector:<{}>", &value);    // &value is a borrowed &referecne -> the data vect1 points to
     }
 
 
