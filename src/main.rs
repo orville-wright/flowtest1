@@ -47,18 +47,12 @@ fn main() {
 
     // new method, more mature
     // avoids sloppy unintegrated counters
-    for (i, &item) in &mut vect1.iter().enumerate() {
+    for (i, item) in vect1.iter_mut().enumerate() {
         let rpopulate = rand::thread_rng().gen_range(0..=100);     // select a random num
-        println!("NEW sliced vector populate - cell: {:03} / orig: {:03} / NEW: {:03}", i, item, rpopulate);
-        //let mut v = vect1[i];
-        vect1[_] = rpopulate;
-        let valve = &mut vect1;
-        //println!("TEST: {}", v )
-        //v.push() = rpopulate;
-        //i = push(rpopulate);
+        print!("NEW sliced vector populate - cell: {:03} / orig: {:03} / NEW: {:03}", i, item, rpopulate);
+        *item = rpopulate;      // deref item as new value
+        println!(" ...updated!")
     }
-
-
 
     println!("==============================");
     println!("Vector len: {}", vect1.len() );
@@ -66,7 +60,7 @@ fn main() {
     // and odd way to access the data in a vector
     // this is a read operation, not a write
     for value in &vect1 {              // a &refernce borrow, i.e. no ownership
-        println!("Vector:<{}>", &value);    // &value is a borrowed &referecne -> the data vect1 points to
+        println!("Vector: <{:03}>", &value);    // &value is a borrowed &referecne -> the data vect1 points to
     }
 
 
@@ -86,6 +80,6 @@ fn main() {
 
     // while loop with predicate and pattern matching using let
     while let Some(value) = vect1.pop() {
-        println!("value = {value}"); // using curly braces to format a local variable
+        println!("value = {:03}", value); // using curly braces to format a local variable
     }
 }
