@@ -18,8 +18,8 @@ fn main() {
     for value in &mut vect1 {
         let y: u8 = rng.gen();
         *value = y;     // insert random number into this cell via *derefencing
-        match neednl {  // print rows with 5 collumns only
-            5 | 10 | 15 | 20 | 25 => println!("/ Vector: <{:03}>", &value),
+        match neednl {      // match every 5 cycles
+            5 | 10 | 15 | 20 | 25 => println!("/ Vector: <{:03}>", &value),     // print rows with 5 collumns only
 	    _ => print!("Vector: <{:03}> ", &value),
 	};
 	neednl += 1;
