@@ -91,13 +91,13 @@ fn main() {
 
     // read keyboard
     println!("\n============= phase 7 ==========");
-    key_reader();
-    println!("\n============= DONE ! ==========");
- 
+    let keys_pressed = key_reader();
+    println!("\n============= DONE ! =============" );
+    println!("The numnber of keys pressed: {:03}", keys_pressed );
 }
 
 
-fn key_reader() {
+fn key_reader() -> i32 {
     println!("\n============= phase 7 ==========");
     let device_state = DeviceState::new();
     let mut prev_keys = vec![Keycode::A];
@@ -119,4 +119,5 @@ fn key_reader() {
         }
         prev_keys = keys;
     }
+    cx
 }
