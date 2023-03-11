@@ -98,6 +98,10 @@ fn main() {
 
 
 fn key_reader() -> i32 {
+    // This code doesn't compile on Linux as it needs a speicfic X11 lib
+    #![doc = "I havent figurred out the Linux issue yet"]
+    // Hopefully its not too large a set of libs needed
+
     println!("\n============= phase 7 ==========");
     let device_state = DeviceState::new();
     let mut prev_keys = vec![Keycode::A];
