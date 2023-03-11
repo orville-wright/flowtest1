@@ -101,18 +101,14 @@ fn key_reader() {
     println!("\n============= phase 7 ==========");
     let device_state = DeviceState::new();
     let mut prev_keys = vec![Keycode::A];
-    //println!{"prev_key s: {:?}", prev_keys.last()};
 
-    let mut cx = 1;
-    loop {      // loop = a RUST keyword, not a free label
+    let mut cx = 1;     // counter
+    loop {                   // loop = a RUST keyword, not a free label
         let keys = device_state.get_keys();
         let keys_c = &keys;      // borrow via ref &key otherwise keys gets invalidated via move due to its type!
-        // consider .clone() annotations / .copy() may not work due to type
         if keys != prev_keys {
             if keys_c.last() != None {
                 if keys.contains(&Keycode::Q) == true {
-                    //println!("I am printing it: {:?}", keys);
-                    //print!("Head cycle: {} : {:?} / ", cx, keys.last().unwrap() );
                     print!("Q key pressed : {} / {:?}", cx, keys.last().unwrap() );
                     break;
                 } else {
