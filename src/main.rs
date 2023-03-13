@@ -95,6 +95,8 @@ fn main() {
     let keys_pressed = key_reader();
     println!("\n============= DONE ! =============" );
     println!("The numnber of keys pressed: {:03}", keys_pressed );
+    basic_kbdr();
+
 }
 
 
@@ -126,4 +128,21 @@ fn key_reader() -> i32 {
         prev_keys = keys;
     }
     cx      // return value (weird but true. Nor return keyword needed)
+}
+
+fn basic_kbdr () {
+    let device_state = DeviceState::new();
+    //let keys_c &Vec<Keycode> = &keys;      // borrow via ref &key otherwise keys gets invalidated via move due to its type!
+    let mut prev_keys = vec![];
+    loop {
+        let keys = device_state.get_keys();
+        if keys != prev_keys {
+            let kx = &keys;
+            match &keys {
+                None => println!("Key released!" ),
+                Some(i) => println!("Key pressed : {:?}", kx.last() ),
+            }
+        }
+        prev_keys = keys;
+    }
 }
