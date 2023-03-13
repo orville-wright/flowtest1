@@ -91,7 +91,6 @@ fn main() {
 
     // read keyboard
     println!("\n============= phase 7 ==========");
-    println!("Calling key_reader()...");
     let keys_pressed = key_reader();
     println!("\n============= DONE ! =============" );
     println!("The numnber of keys pressed: {:03}", keys_pressed );
@@ -100,6 +99,7 @@ fn main() {
 
 fn key_reader() -> i32 {
     // This code doesn't compile on Linux as it needs a speicfic X11 lib
+    #![doc ="It seems device_query:DeviceState for Linux needs specific libs"]
     #![doc = "I havent figurred out the Linux issue yet"]
     // Hopefully its not too large a set of libs needed
 
@@ -124,5 +124,5 @@ fn key_reader() -> i32 {
         }
         prev_keys = keys;
     }
-    cx
+    cx      // return value (weird but true. Nor return keyword needed)
 }
