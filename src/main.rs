@@ -91,6 +91,7 @@ fn main() {
 
     // read keyboard
     println!("\n============= phase 7 ==========");
+    println!("Runnign keybd device reader loop...");
     let keys_pressed = key_reader();
     println!("\n============= DONE ! =============" );
     println!("The numnber of keys pressed: {:03}", keys_pressed );
