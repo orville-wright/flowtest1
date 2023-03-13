@@ -1,0 +1,6 @@
+{
+    "code-runner.enableAppInsights": false,
+    "code-runner.ignoreSelection": true,
+    "code-runner.fileDirectoryAsCwd": true,
+    "code-runner.runInTerminal": true
+}
