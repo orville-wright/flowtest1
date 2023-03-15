@@ -1,9 +1,5 @@
 use rand::Rng;
 use device_query::{DeviceQuery, DeviceState, Keycode};
-// use keycode;
-// use keycode::{KeyMap, KeyMappingId};
-
-// main
 
 fn main() {
     println!("========== start phase 1 ===========");
@@ -137,10 +133,12 @@ fn basic_kbdr () {
     loop {
         let keys = device_state.get_keys();
         if keys != prev_keys {
-            let kx = &keys;
-            match &keys {
-                None => println!("Key released!" ),
-                Some(i) => println!("Key pressed : {:?}", kx.last() ),
+            match keys.len() {
+                0 => continue,
+                3 => println!("3 keys pressed: {} + {} + {}", keys[0], keys[1], keys[2] ),
+                2 => println!("2 keys pressed : {} + {}", keys[0], keys[1] ),
+                1 => println!("1 keys pressed : {:#?}", keys[0] ),
+                _ => println!("Too many keys pressed!" )
             }
         }
         prev_keys = keys;
