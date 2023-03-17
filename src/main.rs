@@ -137,10 +137,17 @@ fn basic_kbdr () {
                 0 => continue,
                 3 => println!("3 keys pressed: {} + {} + {}", keys[0], keys[1], keys[2] ),
                 2 => println!("2 keys pressed : {} + {}", keys[0], keys[1] ),
-                1 => println!("1 keys pressed : {:#?}", keys[0] ),
+                1 => if keys.starts_with(&[Keycode::Escape]) {  //press escape to exit code
+                    println!{"Escape exit key pressed...!"};
+                    break;
+                    } else {
+                        println!("1 key pressed : {:#?}", keys[0] );
+                },
                 _ => println!("Too many keys pressed!" )
             }
         }
         prev_keys = keys;
+        // todo:
+        // bug 1 if the same single key is press multiple times, thie code does nothing
     }
 }
