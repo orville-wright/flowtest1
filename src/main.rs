@@ -142,12 +142,13 @@ fn basic_kbdr () {
                     break;
                     } else {
                         println!("1 key pressed : {:#?}", keys[0] );
-                },
+                    },
                 _ => println!("Too many keys pressed!" )
-            }
+            };
+            //println!("Same key...d : /{:#?}/", keys[0] );
         }
         prev_keys = keys;
-        // todo:
-        // bug 1 if the same single key is press multiple times, thie code does nothing
     }
+    // todo:
+    // bug 1 if the same single key is press multiple times, thie code does nothing
 }
