@@ -6,7 +6,8 @@ fn main() {
 
     /* gen a rand num, create vector @ len of rand_num
       gen a 2nd rand num and use it to populate every cell with same num during init */
-    let mut rng = rand::thread_rng();
+    let thread_rng = rand::thread_rng();
+    let mut rng = thread_rng;
     let y: u8 = rng.gen();
     let rndlen = rand::thread_rng().gen_range(3..=25);
     let mut vect1: Vec<u8> = vec![y; rndlen];       // crate new vector @ rndlen, cells filled with default values = y
